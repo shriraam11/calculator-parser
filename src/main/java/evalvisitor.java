@@ -1,16 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.Math;
 
 public class evalvisitor extends calcBaseVisitor<Integer> {
     Map<String, Integer> memory = new HashMap<String, Integer>();
    
-        @Override
-        public Integer visitAssign(calcParser.AssignContext ctx) {
-            String id = ctx.ID().getText(); // id is left-hand side of '='
-            int value = visit(ctx.expr()); // compute value of expression on right
-            memory.put(id, value);
-            return value;
-        }
+
         @Override
     public Integer visitPrintExpr(calcParser.PrintExprContext ctx) {
         Integer value = visit(ctx.expr()); // evaluate the expr child
@@ -23,11 +18,11 @@ public class evalvisitor extends calcBaseVisitor<Integer> {
         return Integer.valueOf(ctx.INT().getText());
     }
     /** ID */
-    @Override
-    public Integer visitId(calcParser.IdContext ctx) {
-        String id = ctx.ID().getText();
-        if ( memory.containsKey(id) ) return memory.get(id);
-        return 0;
+    @Override public Integer visitPower(calcParser.PowerContext ctx) {
+        double left = (double)visit(ctx.expr(0)); // get value of left subexpression
+        double right = (double)visit(ctx.expr(1)); // get value of right subexpression
+
+        return (int)Math.pow(left,right);
     }
     /** expr op=('*'|'/') expr */
     @Override

@@ -27,18 +27,6 @@ public class calcBaseListener implements calcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssign(calcParser.AssignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAssign(calcParser.AssignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterBlank(calcParser.BlankContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -75,13 +63,13 @@ public class calcBaseListener implements calcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterId(calcParser.IdContext ctx) { }
+	@Override public void enterPower(calcParser.PowerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitId(calcParser.IdContext ctx) { }
+	@Override public void exitPower(calcParser.PowerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -1,9 +1,8 @@
 calcParser$BlankContext.class
 calcParser$ParensContext.class
-calcParser$AssignContext.class
-calcParser$AddsubContext.class
 calcParser$ExprContext.class
 calcParser$MuldivContext.class
 calcParser$PrintExprContext.class
+calcParser$AddsubContext.class
 calcParser$StatContext.class
-calcParser$IdContext.class
+calcParser$PowerContext.class
