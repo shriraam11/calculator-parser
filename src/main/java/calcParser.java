@@ -122,6 +122,7 @@ public class calcParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public TerminalNode NEWLINE() { return getToken(calcParser.NEWLINE, 0); }
+		public TerminalNode EOF() { return getToken(calcParser.EOF, 0); }
 		public PrintExprContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -141,6 +142,7 @@ public class calcParser extends Parser {
 	public final StatContext stat() throws RecognitionException {
 		StatContext _localctx = new StatContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_stat);
+		int _la;
 		try {
 			setState(8);
 			_errHandler.sync(this);
@@ -153,7 +155,15 @@ public class calcParser extends Parser {
 				setState(4);
 				expr(0);
 				setState(5);
-				match(NEWLINE);
+				_la = _input.LA(1);
+				if ( !(_la==EOF || _la==NEWLINE) ) {
+				_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
 				}
 				break;
 			case NEWLINE:
@@ -454,14 +464,14 @@ public class calcParser extends Parser {
 		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\f#\4\2\t\2\4\3\t"+
 		"\3\3\2\3\2\3\2\3\2\5\2\13\n\2\3\3\3\3\3\3\3\3\3\3\3\3\5\3\23\n\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3\36\n\3\f\3\16\3!\13\3\3\3\2\3\4\4\2"+
-		"\4\2\4\3\2\5\6\3\2\7\b\2%\2\n\3\2\2\2\4\22\3\2\2\2\6\7\5\4\3\2\7\b\7\13"+
-		"\2\2\b\13\3\2\2\2\t\13\7\13\2\2\n\6\3\2\2\2\n\t\3\2\2\2\13\3\3\2\2\2\f"+
-		"\r\b\3\1\2\r\23\7\n\2\2\16\17\7\3\2\2\17\20\5\4\3\2\20\21\7\4\2\2\21\23"+
-		"\3\2\2\2\22\f\3\2\2\2\22\16\3\2\2\2\23\37\3\2\2\2\24\25\f\7\2\2\25\26"+
-		"\7\t\2\2\26\36\5\4\3\b\27\30\f\6\2\2\30\31\t\2\2\2\31\36\5\4\3\7\32\33"+
-		"\f\5\2\2\33\34\t\3\2\2\34\36\5\4\3\6\35\24\3\2\2\2\35\27\3\2\2\2\35\32"+
-		"\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \5\3\2\2\2!\37\3\2\2\2"+
-		"\6\n\22\35\37";
+		"\4\2\5\3\3\13\13\3\2\5\6\3\2\7\b\2%\2\n\3\2\2\2\4\22\3\2\2\2\6\7\5\4\3"+
+		"\2\7\b\t\2\2\2\b\13\3\2\2\2\t\13\7\13\2\2\n\6\3\2\2\2\n\t\3\2\2\2\13\3"+
+		"\3\2\2\2\f\r\b\3\1\2\r\23\7\n\2\2\16\17\7\3\2\2\17\20\5\4\3\2\20\21\7"+
+		"\4\2\2\21\23\3\2\2\2\22\f\3\2\2\2\22\16\3\2\2\2\23\37\3\2\2\2\24\25\f"+
+		"\7\2\2\25\26\7\t\2\2\26\36\5\4\3\b\27\30\f\6\2\2\30\31\t\3\2\2\31\36\5"+
+		"\4\3\7\32\33\f\5\2\2\33\34\t\4\2\2\34\36\5\4\3\6\35\24\3\2\2\2\35\27\3"+
+		"\2\2\2\35\32\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \5\3\2\2\2"+
+		"!\37\3\2\2\2\6\n\22\35\37";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -11,8 +11,8 @@ INT : [0-9]+ ; // match integers
 NEWLINE:'\r'? '\n' ;
 WS : [ \r\t\u000C]+ -> skip ;
 
-stat: expr NEWLINE           # printExpr
-        | NEWLINE             # blank
+stat: expr(NEWLINE|EOF)      # printExpr
+       | NEWLINE                        # blank
 
         ;
 expr:    expr '^' expr         # power
