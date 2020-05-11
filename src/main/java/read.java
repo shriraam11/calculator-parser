@@ -1,4 +1,5 @@
 
+import antlr.MismatchedTokenException;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
@@ -39,10 +40,9 @@ public class read {
         catch(RecognitionException e){
             System.out.print("tokennotrecognised");
         }
-
-
-
-
+        catch(Exception e){
+            System.out.println("exception");
+        }
 
     }
 

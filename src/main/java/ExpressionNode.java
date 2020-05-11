@@ -1,4 +1,4 @@
-
+import java.lang.Math;
 public interface    ExpressionNode {
 
     public Integer evaluate();
@@ -77,7 +77,7 @@ class PowNode implements ExpressionNode{
 
     @Override public Integer evaluate()
     {
-        return this.e1.evaluate()^this.e2.evaluate();
+        return (int)Math.pow((double)this.e1.evaluate(),(double)this.e2.evaluate());
     }
 
 }

@@ -2,7 +2,6 @@ MulNode.class
 calcParser$BlankContext.class
 calcParser$IntContext.class
 calcParser$ParensContext.class
-ASTVisitor.class
 DivNode.class
 calcLexer.class
 calcParser$AddsubContext.class
