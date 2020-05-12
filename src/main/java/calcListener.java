@@ -31,6 +31,18 @@ public interface calcListener extends ParseTreeListener {
 	 */
 	void exitBlank(calcParser.BlankContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code negative}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNegative(calcParser.NegativeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code negative}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNegative(calcParser.NegativeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code parens}
 	 * labeled alternative in {@link calcParser#expr}.
 	 * @param ctx the parse tree
@@ -42,6 +54,18 @@ public interface calcListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParens(calcParser.ParensContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code bool}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(calcParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code bool}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(calcParser.BoolContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code addsub}
 	 * labeled alternative in {@link calcParser#expr}.
@@ -66,6 +90,18 @@ public interface calcListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPower(calcParser.PowerContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code float}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterFloat(calcParser.FloatContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code float}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitFloat(calcParser.FloatContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code int}
 	 * labeled alternative in {@link calcParser#expr}.

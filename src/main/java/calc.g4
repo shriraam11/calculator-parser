@@ -1,24 +1,29 @@
 grammar calc;
 
 /*lexical analysis*/
-MUL : '*' ; // assigns token name to '*' used above in grammar
+MUL : '*' ;
 DIV : '/' ;
 ADD : '+' ;
 SUB : '-' ;
 POW : '^' ;
-
-INT : [0-9]+ ; // match integers
-NEWLINE:'\r'? '\n' ;
+//ID : [a-zA-Z] ;
+INT : [0-9]+ ;   //match Integers
+FLOAT : INT ('.' INT)?;// match float
+NEWLINE :'\r'? '\n' ;
+BOOL : 'TRUE'|'FALSE';
 WS : [ \r\t\u000C]+ -> skip ;
 
 stat: expr(NEWLINE|EOF)      # printExpr
        | NEWLINE                        # blank
 
         ;
-expr:    expr '^' expr         # power
+expr:    '-' expr                 #negative
+        | expr '^' expr         # power
         | expr op=('*'|'/') expr        # muldiv
         | expr op=('+'|'-') expr    # addsub
-        | INT                       # int
+        | INT                      #int
+        | FLOAT                    # float
+        | BOOL                 # bool
         | '(' expr ')'               # parens
         ;
 

@@ -3,6 +3,7 @@ calcParser$BlankContext.class
 calcParser$IntContext.class
 calcParser$ParensContext.class
 DivNode.class
+calcParser$FloatContext.class
 calcLexer.class
 calcParser$AddsubContext.class
 ConvertTree.class
@@ -11,9 +12,12 @@ ExpressionNode.class
 calcBaseVisitor.class
 calcListener.class
 IntegerNode.class
+FloatNode.class
 PowNode.class
 calcParser$ExprContext.class
 calcBaseListener.class
+calcParser$NegativeContext.class
+calcParser$BoolContext.class
 calcParser$MuldivContext.class
 calcParser$PrintExprContext.class
 calcParser$StatContext.class

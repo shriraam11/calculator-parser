@@ -1,47 +1,55 @@
 
 import java.lang.Math;
 
-public class evalvisitor extends calcBaseVisitor<Integer> {
+public class evalvisitor extends calcBaseVisitor<Double> {
 
     @Override
-    public Integer visitPrintExpr(calcParser.PrintExprContext ctx) {
-        Integer value = visit(ctx.expr()); // evaluate the expr child
+    public Double visitPrintExpr(calcParser.PrintExprContext ctx) {
+        Double value = visit(ctx.expr()); // evaluate the expr child
         System.out.println(value); // print the result
-        return 0; // return dummy value
+        return value; // return dummy value
     }
     /** INT */
     @Override
-    public Integer visitInt(calcParser.IntContext ctx)
+    public Double visitInt(calcParser.IntContext ctx)
     {
-        return Integer.valueOf(ctx.INT().getText());
+        return (double)Integer.valueOf(ctx.INT().getText());
     }
     /** ID */
     @Override
-    public Integer visitPower(calcParser.PowerContext ctx) {
+    public Double visitPower(calcParser.PowerContext ctx) {
         double left = (double)visit(ctx.expr(0)); // get value of left subexpression
         double right = (double)visit(ctx.expr(1)); // get value of right subexpression
-        return (int)Math.pow(left,right);
+        return Math.pow(left,right);
     }
     /** expr op=('*'|'/') expr */
     @Override
-    public Integer visitMuldiv(calcParser.MuldivContext ctx) {
-        int left = visit(ctx.expr(0)); // get value of left subexpression
-        int right = visit(ctx.expr(1)); // get value of right subexpression
+    public Double visitMuldiv(calcParser.MuldivContext ctx) {
+        double left = visit(ctx.expr(0)); // get value of left subexpression
+        double right = visit(ctx.expr(1)); // get value of right subexpression
         if ( ctx.op.getType() == calcParser.MUL ) return left * right;
         return left / right; // must be DIV
     }
     /** expr op=('+'|'-') expr */
     @Override
-    public Integer visitAddsub(calcParser.AddsubContext ctx) {
-        int left = visit(ctx.expr(0)); // get value of left subexpression
-        int right = visit(ctx.expr(1)); // get value of right subexpression
+    public Double visitAddsub(calcParser.AddsubContext ctx) {
+        double left = visit(ctx.expr(0)); // get value of left subexpression
+        double right = visit(ctx.expr(1)); // get value of right subexpression
         if ( ctx.op.getType() == calcParser.ADD ) return left + right;
         return left - right; // must be SUB
     }
+    @Override public Double visitFloat(calcParser.FloatContext ctx) {
+        return (double)Float.parseFloat(ctx.FLOAT().getText());
+    }
+
     /** '(' expr ')' */
     @Override
-    public Integer visitParens(calcParser.ParensContext ctx) {
+    public Double visitParens(calcParser.ParensContext ctx) {
         return visit(ctx.expr()); // return child expr's value
+    }
+    /** '-' expr */
+    @Override public Double visitNegative(calcParser.NegativeContext ctx) {
+        return -1*visit(ctx.expr());
     }
 }
 

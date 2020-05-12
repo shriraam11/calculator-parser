@@ -1,11 +1,7 @@
 
-import antlr.MismatchedTokenException;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-
-
-
-import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -20,15 +16,15 @@ public class read {
                 calcParser parser = new calcParser(tokens);
 
                 ParseTree tree = parser.stat(); // begin parsing at stat rule
-//                evalvisitor visitor = new evalvisitor();
-//                visitor.visit(tree);
-//                 lexer.removeErrorListeners();
-//                 parser.removeErrorListeners();
-//                System.out.println(tree.toStringTree(parser));
+                evalvisitor visitor = new evalvisitor();
+                visitor.visit(tree);  //visiting using antlr visitor
+
+                System.out.println(tree.toStringTree(parser));
+
                 ConvertTree ast = new ConvertTree(); //
                 ExpressionNode node;
                 node= ast.visit(tree);
-                Integer value= node.evaluate();
+                Double value= node.evaluate();  // manually evaluating tree
                 System.out.println(value);
         }
         catch(NullPointerException e){

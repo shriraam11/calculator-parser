@@ -1,9 +1,6 @@
 import java.lang.Math;
 public interface    ExpressionNode {
-
-    public Integer evaluate();
-
-
+    public double evaluate();
 }
 
 class   IntegerNode implements ExpressionNode {
@@ -11,9 +8,19 @@ class   IntegerNode implements ExpressionNode {
     public IntegerNode(Integer value) {
         this.value = value;
     }
-    @Override public Integer evaluate()
+    @Override public double evaluate()
     { return this.value;
     }
+}
+class FloatNode implements  ExpressionNode{
+    private Float value;
+    public FloatNode(Float value){
+        this.value =value;
+    }
+    @Override public double evaluate()
+    { return this.value;
+    }
+
 }
 
 class AddNode implements ExpressionNode{
@@ -22,8 +29,7 @@ class AddNode implements ExpressionNode{
         this.e1= x;
         this.e2 =y;
     }
-
-    @Override public Integer evaluate()
+    @Override public double evaluate()
     {
         return this.e1.evaluate()+this.e2.evaluate();
     }
@@ -35,9 +41,9 @@ class SubNode implements ExpressionNode{
         this.e1= x;
         this.e2 =y;
     }
-
-    @Override public Integer evaluate()
+    @Override public double evaluate()
     {
+
         return this.e1.evaluate()-this.e2.evaluate();
     }
 
@@ -48,8 +54,7 @@ class MulNode implements ExpressionNode{
         this.e1= x;
         this.e2 =y;
     }
-
-    @Override public Integer evaluate()
+    @Override public double evaluate()
     {
         return this.e1.evaluate()*this.e2.evaluate();
     }
@@ -61,9 +66,9 @@ class DivNode implements ExpressionNode{
         this.e1= x;
         this.e2 =y;
     }
-
-    @Override public Integer evaluate()
+    @Override public double evaluate()
     {
+
         return this.e1.evaluate()/this.e2.evaluate();
     }
 
@@ -75,10 +80,11 @@ class PowNode implements ExpressionNode{
         this.e2 =y;
     }
 
-    @Override public Integer evaluate()
+    @Override public double evaluate()
     {
-        return (int)Math.pow((double)this.e1.evaluate(),(double)this.e2.evaluate());
+        return Math.pow(this.e1.evaluate(),this.e2.evaluate());
     }
+
 
 }
 

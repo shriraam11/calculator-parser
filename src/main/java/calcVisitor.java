@@ -24,12 +24,26 @@ public interface calcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBlank(calcParser.BlankContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code negative}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNegative(calcParser.NegativeContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code parens}
 	 * labeled alternative in {@link calcParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitParens(calcParser.ParensContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code bool}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool(calcParser.BoolContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code addsub}
 	 * labeled alternative in {@link calcParser#expr}.
@@ -44,6 +58,13 @@ public interface calcVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPower(calcParser.PowerContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code float}
+	 * labeled alternative in {@link calcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFloat(calcParser.FloatContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code int}
 	 * labeled alternative in {@link calcParser#expr}.
